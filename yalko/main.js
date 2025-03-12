@@ -1,18 +1,30 @@
-import Big from './node_modules/big.js/big.mjs';
+let x = 1;
+const y = Math.ceil(Math.random() * 10);
 
-console.log(Big);
+const rollDice = () => {
+  const result = Math.ceil(Math.random() * 6);
+  return result;
+}
 
-console.log(
-  0.1 + 0.2,
-  new Big(0.1).plus(0.2).toNumber()
-);
+x += y; // 🔴
+x *= y;
+x -= y;
+x ** (y % 3 + 1); // 🔴
 
-console.log(
-  0.2 * 0.7,
-  new Big(0.2).times(0.7).toNumber(),
-);
+for (let i = 0; i < 5; i++) {
+  x = addOrSubtDice(x); // 🟢
+}
 
-console.log(
-  0.9 - 0.6,
-  new Big(0.9).minus(0.6).toNumber()
-);
+try { x.toUpperCase(); } catch (e) {}
+// x.toUpperCase();
+
+function addOrSubtDice (x) {
+  let dice = rollDice();
+  if (Math.random() > 0.5) dice *= -1; // 🟡
+  x += dice; // 위에 조건부 넣을 시 브레이크포인트 추가
+  return x;
+}
+
+x **= 2; // 🔴
+
+console.log(x);
