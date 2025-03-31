@@ -1,53 +1,59 @@
 import './App.css'
 import { useState } from 'react'
 
-function App() {
+function Form() {
+  const [formData, setFormData] = useState({
+    username: '',
+    isSubscribed: false,
+    role: 'user'
+  })
+  const roles = ['user', 'admin', 'guest']
 
-  const [todos, setTodos] = useState(
-    ['Learn React', 'Build a project']
-  )
-
-  const [newTodo, setNewTodo] = useState('')
-
-  const addTodo = (newTodo) => {
-    setTodos([...todos, newTodo])
-    setNewTodo('')
-  }
-  const deleteTodo = (index) => {
-    setTodos(
-      todos.filter(
-        (_, i) => i !== index)
-    );
+  const handleChange = (e) => {
+    const { name, value, type, checked }
+     = e.target
+    setFormData({
+      ...formData,
+      [name]:  type === 'checkbox' ? checked : value
+    })
   }
 
   return (
-    <>
-      <h3>Todo List</h3>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>
-            {todo}
-            <button onClick={
-              () => deleteTodo(index)}>
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
-      <p>Typing: {newTodo}</p>
+    <form>
+      <p>
+        Name: {formData.username}
+        {formData.isSubscribed && ' (Subscribed)'}
+      </p>
+      <p>Role: {formData.role}</p>
       <input
         type="text"
-        value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
-        onKeyDown={(e)=> {
-            if(e.key==="Enter"){
-                addTodo(newTodo);
-            }
-        }}
+        name="username"
+        placeholder="Username"
+        value={formData.username}
+        onChange={handleChange}
       />
-      <button onClick={() => addTodo(newTodo)}> Add New Task</button>
-  </>
+
+      <label>
+        <input
+          type="checkbox"
+          name="isSubscribed"
+          checked={formData.isSubscribed}
+          onChange={handleChange}
+        />
+        Subscribe
+      </label>
+
+      <select 
+        name="role" value={formData.role}
+        onChange={handleChange}>
+        {roles.map((r) => (
+          <option key={r} value={r}>
+            {r}
+          </option>
+        ))}
+      </select>
+    </form>
   )
 }
 
-export default App
+export default Form
