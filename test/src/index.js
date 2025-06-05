@@ -1,9 +1,10 @@
-const $userName=document.getElementById('userName');
-const $password=document.getElementById('password');
+const cafe={
+    brand:'이디야',
+    menu:'아메리카노',
+    print: function () {
+        console.log(this);
+    },
+};
 
-const $loginBtn = document.querySelector('button');
-
-$loginBtn.addEventListener('click', ()=>{
-    console.log($userName.value);
-    console.log($password.value);
-});
+const myCafe = cafe.print;
+myCafe();
