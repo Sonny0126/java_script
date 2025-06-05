@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Form-test</title>
+        <meta charSet="utf-8"/>
+    </head>
 
-<head>
-  <tilte>Dom Tree</tilte>
-  <meta charset="utf-8" />
-</head>
-
-<body>
-  <div class="animal-info">
-    <div class="info-item" id="name">강아지</div>
-    <div class="info-item" id="name">갈색</div>
-    <div class="info-item" id="name">2살</div>
-  </div>
-  <script src="src/index.js"></script>
-</body>
-
+    <body>
+        <label for=""userName">이름:</label>
+        - <input type="text" id ="userName" placeholder="이름을 입력하세요." value="홍길동"/><!--number로 type을 바꾸면 숫자만 입력가능 -->
+        <label for=""password">비밀번호:</label>
+        <input type="password" id ="password" placeholder="비밀번호를 입력하세요."/>
+        <button>로그인</button>
+        <script src="./src/index.js"></script>
+    </body>
 </html>

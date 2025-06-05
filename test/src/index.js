@@ -1,7 +1,9 @@
-let $type = document.createElement('div');
-$type.className='info-item';
-$type.id='type';
-let $typeText= document.createTextNode('말티즈');
+const $userName=document.getElementById('userName');
+const $password=document.getElementById('password');
 
-console.log($type);
-console.log($typeText);
+const $loginBtn = document.querySelector('button');
+
+$loginBtn.addEventListener('click', ()=>{
+    console.log($userName.value);
+    console.log($password.value);
+});
