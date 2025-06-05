@@ -1,6 +1,7 @@
-let c1, c2, c3;
-[c1, c2, c3] = ["green", "blue", "purple"];
+let $type = document.createElement('div');
+$type.className='info-item';
+$type.id='type';
+let $typeText= document.createTextNode('말티즈');
 
-console.log(c1);
-console.log(c2);
-console.log(c3);
+console.log($type);
+console.log($typeText);
