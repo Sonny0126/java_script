@@ -1,6 +1,7 @@
-let c1, c2, c3;
-[c1, c2, c3] = ["green", "blue", "purple"];
+const getData = async () => {
+  let response = await fetch("https://jsonplaceholder.typicode.com/users");
+  let data = await response.json();
+  console.log(data);
+};
 
-console.log(c1);
-console.log(c2);
-console.log(c3);
+getData();
